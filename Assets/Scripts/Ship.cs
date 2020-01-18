@@ -48,7 +48,11 @@ public class Ship : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        var newPosition = 2 * ScreenUtils.ScreenCenter - transform.position;
-        rb.MovePosition(newPosition);
+        var position = transform.position;
+        if (position.x <= ScreenUtils.ScreenLeft.x || position.x >= ScreenUtils.ScreenRight.x)
+            position.x = 2 * ScreenUtils.ScreenCenter.x - position.x;
+        if (position.y <= ScreenUtils.ScreenBottom.y || position.y >= ScreenUtils.ScreenTop.y)
+            position.y = 2 * ScreenUtils.ScreenCenter.y - position.y;
+        rb.MovePosition(position);
     }
 }
