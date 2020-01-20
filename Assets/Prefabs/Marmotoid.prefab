@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5241035765684917961}
   - component: {fileID: 5241035765684917974}
   - component: {fileID: 5241035765684917975}
+  - component: {fileID: 4562568484656183832}
   m_Layer: 9
   m_Name: Marmotoid
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &5241035765684917974
 CircleCollider2D:
@@ -138,3 +139,15 @@ MonoBehaviour:
   - {fileID: 4191922228788521278, guid: 563f8a2e960d849a2a0bf920fbdfd72a, type: 3}
   - {fileID: -3578487223820549584, guid: a18a28dfff65041488b55d277b2a0236, type: 3}
   - {fileID: 21300000, guid: d9d3f1c208f324990a0490f9ae5ea20a, type: 3}
+--- !u!114 &4562568484656183832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241035765684917972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33ce9952a1e44b449d0e7c640c1f90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

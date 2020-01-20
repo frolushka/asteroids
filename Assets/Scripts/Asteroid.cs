@@ -36,17 +36,7 @@ public class Asteroid : MonoBehaviour
     {
         sr.sprite = sprites[Random.Range(0, sprites.Length)];
     }
-
-    private void OnBecameInvisible()
-    {
-        var position = transform.position;
-        if (position.x <= ScreenUtils.ScreenLeft.x || position.x >= ScreenUtils.ScreenRight.x)
-            position.x = 2 * ScreenUtils.ScreenCenter.x - position.x;
-        if (position.y <= ScreenUtils.ScreenBottom.y || position.y >= ScreenUtils.ScreenTop.y)
-            position.y = 2 * ScreenUtils.ScreenCenter.y - position.y;
-        rb.MovePosition(position);
-    }
-
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(other.gameObject);

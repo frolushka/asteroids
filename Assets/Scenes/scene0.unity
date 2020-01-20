@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 1296724109}
   - component: {fileID: 1296724108}
   - component: {fileID: 1296724110}
+  - component: {fileID: 1296724111}
   m_Layer: 8
   m_Name: Ship Murray
   m_TagString: Untagged
@@ -339,9 +340,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrustForce: 3
   rotateDegreesPerSecond: 45
+  bulletPrefab: {fileID: 1246171702731418235, guid: cb50fa283bcfd43c38a5528d438d7d68,
+    type: 3}
   moveForwardButton: 32
   rotateLeftButton: 276
   rotateRightButton: 275
+  shootButton: 306
+--- !u!114 &1296724111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296724105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d33ce9952a1e44b449d0e7c640c1f90b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321785138
 GameObject:
   m_ObjectHideFlags: 0
