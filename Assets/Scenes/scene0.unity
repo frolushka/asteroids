@@ -389,6 +389,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5241035765684917972, guid: f6c9e80dffed1488fba2415cdadf254c,
     type: 3}
+  onPlayerDestroyed: {fileID: 0}
+  onAsteroidDestroyed: {fileID: 8300000, guid: 9c2191967ae1247b8be4c004c3cdfed9, type: 3}
+  onShot: {fileID: 8300000, guid: c334c2d922f0c42e3926a1446a762fde, type: 3}
 --- !u!4 &1321785140
 Transform:
   m_ObjectHideFlags: 0

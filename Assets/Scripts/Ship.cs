@@ -40,7 +40,7 @@ public class Ship : MonoBehaviour
             _rotateDirection = 0;
 
         if (Input.GetKeyDown(shootButton))
-            Instantiate(bulletPrefab, t.position, t.rotation);
+            Shoot();
     }
 
     private void FixedUpdate()
@@ -56,5 +56,11 @@ public class Ship : MonoBehaviour
             _thrustDirection * Mathf.Cos(Mathf.Deg2Rad * z), 
             _thrustDirection * Mathf.Sin(Mathf.Deg2Rad * z)
         );
+    }
+
+    private void Shoot()
+    {
+        GameManager.Instance.PlaySound(AudioEvent.Shot);
+        Instantiate(bulletPrefab, t.position, t.rotation);
     }
 }

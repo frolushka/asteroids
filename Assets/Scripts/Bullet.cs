@@ -22,6 +22,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        GameManager.Instance.PlaySound(AudioEvent.AsteroidDestroyed);
         Destroy(gameObject);
         Destroy(other.gameObject);
     }
