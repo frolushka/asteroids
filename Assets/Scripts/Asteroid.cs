@@ -44,21 +44,23 @@ public class Asteroid : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Player":
-                GameManager.Instance.PlaySound(AudioEvent.PlayerDestroyed);
-                Destroy(other.gameObject);
+                GameManager.Instance.GameOver();
                 break;
             case "Bullet":
                 GameManager.Instance.PlaySound(AudioEvent.AsteroidDestroyed, 1f / transform.localScale.x);
-                Destroy(other.gameObject);
-                if (transform.localScale.x > .45f)
-                {
-                    var rock = GameManager.Instance.SpawnRock(transform.position);
-                    rock.transform.localScale = transform.localScale / 2;
-                    rock = GameManager.Instance.SpawnRock(transform.position);
-                    rock.transform.localScale = transform.localScale / 2;
-                }
+                Split();
                 Destroy(gameObject);
                 break;
         }
+        Destroy(other.gameObject);
+    }
+
+    private void Split()
+    {
+        if (!(transform.localScale.x > .45f)) return;
+        var rock = GameManager.Instance.SpawnRock(transform.position);
+        rock.transform.localScale = transform.localScale / 2;
+        rock = GameManager.Instance.SpawnRock(transform.position);
+        rock.transform.localScale = transform.localScale / 2;
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public enum AudioEvent
 {
-    PlayerDestroyed,
+    GameOver,
     AsteroidDestroyed,
     Shot
 }
@@ -11,16 +13,23 @@ public enum AudioEvent
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
+
     [SerializeField] private GameObject asteroidPrefab;
 
-    [SerializeField] private AudioClip onPlayerDestroyed;
+    [SerializeField] private AudioClip onGameOver;
     [SerializeField] private AudioClip onAsteroidDestroyed;
     [SerializeField] private AudioClip onShot;
 
+    [SerializeField] private PlayableDirector gameOverDirector;
+
+    [SerializeField] private TextMeshProUGUI timeLabel;
+    [SerializeField] private TextMeshProUGUI finalTimeLabel;
+
+    private bool isGameOver;
+
     private void Awake()
     {
-        Instance = this;   
+        Instance = this;
         ScreenUtils.Initialize();
     }
 
@@ -32,6 +41,12 @@ public class GameManager : MonoBehaviour
         SpawnRock(ScreenUtils.ScreenBottom);
     }
 
+    private void Update()
+    {
+        if (isGameOver) return;
+        timeLabel.text = $"Time: {Time.time:f2}";
+    }
+
     public void PlaySound(AudioEvent audioEvent, float pitch = 1)
     {
         var audioGameObject = new GameObject();
@@ -40,8 +55,8 @@ public class GameManager : MonoBehaviour
         
         switch (audioEvent)
         {
-            case AudioEvent.PlayerDestroyed:
-                audioSource.clip = onPlayerDestroyed;
+            case AudioEvent.GameOver:
+                audioSource.clip = onGameOver;
                 break;
             case AudioEvent.AsteroidDestroyed:
                 audioSource.clip = onAsteroidDestroyed;
@@ -58,5 +73,13 @@ public class GameManager : MonoBehaviour
     public GameObject SpawnRock(Vector3 position)
     {
         return Instantiate(asteroidPrefab, position, Quaternion.identity);
+    }
+
+    public void GameOver()
+    {
+        isGameOver = true;
+        finalTimeLabel.text = $"Your time: {Time.time:f2}";
+        Instance.PlaySound(AudioEvent.GameOver);
+        gameOverDirector.Play();
     }
 }
