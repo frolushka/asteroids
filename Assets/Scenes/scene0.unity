@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1296724111}
   m_Layer: 8
   m_Name: Ship Murray
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 5241035765684917972, guid: f6c9e80dffed1488fba2415cdadf254c,
     type: 3}
-  onPlayerDestroyed: {fileID: 0}
+  onPlayerDestroyed: {fileID: 8300000, guid: 874e0d20b21a1442e99d73c5eb780d19, type: 3}
   onAsteroidDestroyed: {fileID: 8300000, guid: 9c2191967ae1247b8be4c004c3cdfed9, type: 3}
   onShot: {fileID: 8300000, guid: c334c2d922f0c42e3926a1446a762fde, type: 3}
 --- !u!4 &1321785140

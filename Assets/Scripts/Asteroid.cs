@@ -39,6 +39,26 @@ public class Asteroid : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(other.gameObject);
+        if (!other.gameObject) return;
+
+        switch (other.gameObject.tag)
+        {
+            case "Player":
+                GameManager.Instance.PlaySound(AudioEvent.PlayerDestroyed);
+                Destroy(other.gameObject);
+                break;
+            case "Bullet":
+                GameManager.Instance.PlaySound(AudioEvent.AsteroidDestroyed, 1f / transform.localScale.x);
+                Destroy(other.gameObject);
+                if (transform.localScale.x > .45f)
+                {
+                    var rock = GameManager.Instance.SpawnRock(transform.position);
+                    rock.transform.localScale = transform.localScale / 2;
+                    rock = GameManager.Instance.SpawnRock(transform.position);
+                    rock.transform.localScale = transform.localScale / 2;
+                }
+                Destroy(gameObject);
+                break;
+        }
     }
 }

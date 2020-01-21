@@ -26,16 +26,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(asteroidPrefab, ScreenUtils.ScreenLeft, Quaternion.identity);
-        Instantiate(asteroidPrefab, ScreenUtils.ScreenRight, Quaternion.identity);
-        Instantiate(asteroidPrefab, ScreenUtils.ScreenTop, Quaternion.identity);
-        Instantiate(asteroidPrefab, ScreenUtils.ScreenBottom, Quaternion.identity);
+        SpawnRock(ScreenUtils.ScreenLeft);
+        SpawnRock(ScreenUtils.ScreenRight);
+        SpawnRock(ScreenUtils.ScreenTop);
+        SpawnRock(ScreenUtils.ScreenBottom);
     }
 
-    public void PlaySound(AudioEvent audioEvent)
+    public void PlaySound(AudioEvent audioEvent, float pitch = 1)
     {
         var audioGameObject = new GameObject();
         var audioSource = audioGameObject.AddComponent<AudioSource>();
+        audioSource.pitch = pitch;
         
         switch (audioEvent)
         {
@@ -52,5 +53,10 @@ public class GameManager : MonoBehaviour
         
         audioSource.Play();
         Destroy(audioGameObject, audioSource.clip.length);
+    }
+
+    public GameObject SpawnRock(Vector3 position)
+    {
+        return Instantiate(asteroidPrefab, position, Quaternion.identity);
     }
 }
